@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>AutoPostBot – Affiliate Content & Social Publishing in One Place</title>
+		<meta name="description" content="AutoPostBot helps creators manage Shopee, Amazon and custom affiliate content and publish to Facebook Pages from one dashboard, powered by a browser extension.">
+		<link rel="icon" href="assets/images/logo.png">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="assets/style.css">
+	</head>
+
+	<body>
+		<a class="visually-hidden-focusable position-absolute p-2 bg-white" href="#main">Skip to content</a>
+		<nav class="navbar navbar-expand-lg fixed-top" aria-label="Main">
+			<div class="container">
+				<a class="navbar-brand brand text-white fw-bold d-flex align-items-center gap-2" href="/"><img
+						src="assets/images/logo.png" alt="AutoPostBot logo">AutoPostBot</a>
+				<button class="navbar-toggler border-0" data-bs-toggle="collapse" data-bs-target="#nv"
+					aria-label="Toggle menu"><i class="bi bi-list text-white fs-2"></i></button>
+				<div class="collapse navbar-collapse" id="nv">
+					<ul class="navbar-nav mx-auto" id="menu"></ul>
+					<a href="#auth" class="text-white me-3 text-decoration-none fw-semibold">Log in</a>
+					<a href="#pricing" class="btn btn-grad btn-sm">Get Started</a>
+				</div>
+			</div>
+		</nav>
+
+		<main id="main">
+			<!-- HOME -->
+			<div class="page" id="home">
+				<header class="hero">
+					<div class="container">
+						<div class="row align-items-center g-5">
+							<div class="col-lg-6">
+								<span class="chip live mb-3">Now live: Shopee · Amazon · Facebook Pages</span>
+								<h1 class="display-4 fw-extrabold fw-bold">Turn affiliate products into <span
+										class="text-grad">published posts</span>, on autopilot.</h1>
+								<p class="lead my-4">Scrape products with our browser extension, manage everything in
+									one dashboard, and publish to your Facebook Pages without the copy-paste grind.</p>
+								<a href="#pricing" class="btn btn-grad btn-lg me-2 mb-2">Get Started</a><a
+									href="#features" class="btn btn-ghost btn-lg mb-2">Explore Features</a>
+							</div>
+							<div class="col-lg-6">
+								<div class="mock">
+									<div class="bar"><i class="bi bi-circle-fill text-danger"></i> <i
+											class="bi bi-circle-fill text-warning"></i> <i
+											class="bi bi-circle-fill text-success"></i> &nbsp; app.autopostbot.com</div>
+									<div class="p-4">
+										<div class="d-flex justify-content-between mb-3"><strong>Content
+												Queue</strong><span class="chip live">3 ready</span></div>
+										<div class="d-flex gap-3 align-items-center border rounded-3 p-2 mb-2">
+											<div class="ico m-0"><i class="bi bi-bag"></i></div>
+											<div class="flex-grow-1 small"><b>Wireless Earbuds</b><br>Shopee · Imported
+												via extension</div><i class="bi bi-facebook text-primary fs-4"></i>
+										</div>
+										<div class="d-flex gap-3 align-items-center border rounded-3 p-2 mb-2">
+											<div class="ico m-0"><i class="bi bi-box-seam"></i></div>
+											<div class="flex-grow-1 small"><b>Desk Lamp</b><br>Amazon · Imported via
+												extension</div><i class="bi bi-facebook text-primary fs-4"></i>
+										</div>
+										<div class="d-flex gap-3 align-items-center border rounded-3 p-2">
+											<div class="ico m-0"><i class="bi bi-pencil"></i></div>
+											<div class="flex-grow-1 small"><b>My own review post</b><br>Custom content
+											</div><i class="bi bi-facebook text-primary fs-4"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</header>
+
+				<section class="s">
+					<div class="container text-center">
+						<div class="eyebrow">Content sources</div>
+						<h2 class="fw-bold mb-4">Bring your affiliate products together</h2>
+						<div class="row g-3 justify-content-center" id="sources"></div>
+					</div>
+				</section>
+
+				<section class="s alt">
+					<div class="container">
+						<div class="row align-items-center g-5">
+							<div class="col-lg-6">
+								<div class="eyebrow">Essential companion</div>
+								<h2 class="fw-bold">The browser extension does the heavy lifting</h2>
+								<p class="text-secondary">After subscribing, install the AutoPostBot extension. It
+									scrapes product details from your chosen shop and sends them straight to your
+									dashboard, ready to manage and publish.</p>
+								<a href="#how" class="btn btn-grad me-2"><i class="bi bi-puzzle me-1"></i>Install the
+									Extension</a><a href="#how" class="btn btn-outline-dark rounded-pill">See how it
+									works</a>
+							</div>
+							<div class="col-lg-6">
+								<div class="row g-3 text-center" id="flow-mini"></div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="s">
+					<div class="container">
+						<div class="text-center mb-5">
+							<div class="eyebrow">Why AutoPostBot</div>
+							<h2 class="fw-bold">Everything you need, nothing you don't</h2>
+						</div>
+						<div class="row g-4" id="feat-home"></div>
+					</div>
+				</section>
+
+				<section class="s alt">
+					<div class="container">
+						<div class="text-center mb-5">
+							<div class="eyebrow">Social publishing</div>
+							<h2 class="fw-bold">Connect your channels</h2>
+						</div>
+						<div class="row g-3 justify-content-center" id="socials"></div>
+					</div>
+				</section>
+
+				<section class="s">
+					<div class="container">
+						<div class="text-center mb-5">
+							<div class="eyebrow">Pricing</div>
+							<h2 class="fw-bold">Simple plans, start when you're ready</h2>
+						</div>
+						<div class="row g-4 justify-content-center plans"></div>
+					</div>
+				</section>
+
+				<section class="s alt">
+					<div class="container">
+						<div class="cta text-center" style="background:var(--navy)">
+							<div class="eyebrow text-white-50">Partnership Program</div>
+							<h2 class="fw-bold">Love AutoPostBot? Earn by sharing it.</h2>
+							<p class="text-white-50">Refer new users and earn commissions. Details to be announced.</p>
+							<a href="#partners" class="btn btn-grad">Explore the Program</a>
+						</div>
+					</div>
+				</section>
+
+				<section class="s">
+					<div class="container">
+						<div class="text-center mb-5">
+							<div class="eyebrow">Social proof</div>
+							<h2 class="fw-bold">What creators will say</h2>
+						</div>
+						<div class="row g-4" id="testi"></div>
+					</div>
+				</section>
+
+				<section class="s alt">
+					<div class="container" style="max-width:800px">
+						<h2 class="fw-bold text-center mb-4">Frequently asked questions</h2>
+						<div class="accordion faq" id="faq-home"></div>
+						<p class="text-center mt-3"><a href="#faq">View all FAQs →</a></p>
+					</div>
+				</section>
+
+				<section class="s">
+					<div class="container">
+						<div class="cta text-center">
+							<h2 class="fw-bold">Ready to streamline your affiliate workflow?</h2>
+							<p class="mb-4">Subscribe, install the extension, and publish your first post today.</p><a
+								href="#pricing" class="btn btn-light fw-bold rounded-pill px-4">Get Started</a>
+						</div>
+					</div>
+				</section>
+			</div>
+
+			<!-- FEATURES -->
+			<div class="page" id="features">
+				<header class="hero text-center">
+					<div class="container">
+						<h1 class="fw-bold">Powerful features, <span class="text-grad">simple workflow</span></h1>
+						<p class="lead">Everything for managing affiliate content and publishing from one place.</p>
+					</div>
+				</header>
+				<section class="s">
+					<div class="container">
+						<div class="row g-4" id="feat-all"></div>
+					</div>
+				</section>
+			</div>
+
+			<!-- HOW -->
+			<div class="page" id="how">
+				<header class="hero text-center">
+					<div class="container">
+						<h1 class="fw-bold">From product page to published post in <span class="text-grad">5
+								steps</span></h1>
+						<p class="lead">The extension collects. The web app manages and publishes.</p>
+					</div>
+				</header>
+				<section class="s">
+					<div class="container" style="max-width:820px" id="steps"></div>
+					<div class="container mt-4">
+						<div class="cta text-center">
+							<h3 class="fw-bold">Step 1 starts here</h3>
+							<p>Subscribe, then install the extension.</p><a href="#"
+								class="btn btn-light fw-bold rounded-pill me-2"><i class="bi bi-puzzle"></i> Install
+								Extension <span class="ph">[Store link]</span></a><a href="#pricing"
+								class="btn btn-ghost">Choose a plan</a>
+						</div>
+					</div>
+				</section>
+			</div>
+
+			<!-- PRICING -->
+			<div class="page" id="pricing">
+				<header class="hero text-center">
+					<div class="container">
+						<h1 class="fw-bold">Plans for every <span class="text-grad">creator</span></h1>
+						<p class="lead">All plans include the browser extension. <span class="ph">Prices are
+								placeholders.</span></p>
+					</div>
+				</header>
+				<section class="s">
+					<div class="container">
+						<div class="row g-4 justify-content-center plans"></div>
+						<div class="table-responsive mt-5">
+							<table class="table align-middle text-center">
+								<thead>
+									<tr>
+										<th class="text-start">Feature</th>
+										<th>Starter</th>
+										<th>Pro</th>
+										<th>Business</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="text-start">Shopee &amp; Amazon content</td>
+										<td>✓</td>
+										<td>✓</td>
+										<td>✓</td>
+									</tr>
+									<tr>
+										<td class="text-start">Custom content</td>
+										<td>✓</td>
+										<td>✓</td>
+										<td>✓</td>
+									</tr>
+									<tr>
+										<td class="text-start">Browser extension</td>
+										<td>✓</td>
+										<td>✓</td>
+										<td>✓</td>
+									</tr>
+									<tr>
+										<td class="text-start">Facebook Pages</td>
+										<td><span class="ph">[N]</span></td>
+										<td><span class="ph">[N]</span></td>
+										<td><span class="ph">[N]</span></td>
+									</tr>
+									<tr>
+										<td class="text-start">Monthly posts</td>
+										<td><span class="ph">[limit]</span></td>
+										<td><span class="ph">[limit]</span></td>
+										<td><span class="ph">[limit]</span></td>
+									</tr>
+									<tr>
+										<td class="text-start">Support</td>
+										<td>Email</td>
+										<td>Priority</td>
+										<td>Priority</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</section>
+			</div>
+
+			<!-- PARTNERS -->
+			<div class="page" id="partners">
+				<header class="hero text-center">
+					<div class="container"><span class="chip soon mb-3">Partnership Program</span>
+						<h1 class="fw-bold">Grow with us. <span class="text-grad">Earn</span> with us.</h1>
+						<p class="lead">Introduce AutoPostBot to your audience and earn commissions on every referred
+							user.</p><a href="#contact" class="btn btn-grad btn-lg">Become a Partner</a>
+					</div>
+				</header>
+				<section class="s">
+					<div class="container">
+						<div class="row g-4" id="perks"></div>
+					</div>
+				</section>
+				<section class="s alt">
+					<div class="container" style="max-width:820px">
+						<h2 class="fw-bold text-center mb-4">How it works</h2>
+						<div class="d-flex gap-3 mb-3">
+							<div class="step-n">1</div>
+							<div><b>Apply</b><br>Submit your partner application.</div>
+						</div>
+						<div class="d-flex gap-3 mb-3">
+							<div class="step-n">2</div>
+							<div><b>Share your link</b><br>Receive your unique referral link <span class="ph">[tracking
+									method TBD]</span>.</div>
+						</div>
+						<div class="d-flex gap-3 mb-3">
+							<div class="step-n">3</div>
+							<div><b>Earn</b><br>Commission of <span class="ph">[X%]</span> paid <span
+									class="ph">[payment schedule/method]</span>.</div>
+						</div>
+					</div>
+				</section>
+				<section class="s">
+					<div class="container" style="max-width:800px">
+						<h2 class="fw-bold text-center mb-4">Partner FAQs</h2>
+						<div class="accordion faq" id="faq-partner"></div>
+						<div class="text-center mt-4"><a href="#contact" class="btn btn-grad btn-lg">Become a
+								Partner</a></div>
+					</div>
+				</section>
+			</div>
+
+			<!-- ABOUT -->
+			<div class="page" id="about">
+				<header class="hero text-center">
+					<div class="container">
+						<h1 class="fw-bold">Built for <span class="text-grad">creators</span></h1>
+					</div>
+				</header>
+				<section class="s">
+					<div class="container" style="max-width:800px">
+						<p class="lead">AutoPostBot exists to give content creators their time back. Affiliate marketing
+							shouldn't mean hours of copying product details and posting by hand.</p>
+						<p>We combine a browser extension for product collection with a central web app for content
+							management and publishing, starting with Shopee, Amazon, custom content and Facebook Pages,
+							with more integrations on the roadmap.</p>
+						<div class="row g-3 mt-3">
+							<div class="col-md-4">
+								<div class="card-x">
+									<h5>Mission</h5>
+									<p class="small mb-0">Simplify affiliate content workflows.</p>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="card-x">
+									<h5>Honesty</h5>
+									<p class="small mb-0">We clearly label what's live and what's coming.</p>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="card-x">
+									<h5>Team</h5>
+									<p class="small mb-0"><span class="ph">[Company / team details]</span></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+
+			<!-- BLOG -->
+			<div class="page" id="blog">
+				<header class="hero text-center">
+					<div class="container">
+						<h1 class="fw-bold">Blog &amp; <span class="text-grad">Tutorials</span></h1>
+						<p class="lead">Guides, product updates and video walkthroughs.</p>
+					</div>
+				</header>
+				<section class="s">
+					<div class="container">
+						<h3 class="fw-bold mb-3">Video tutorials</h3>
+						<div class="row g-4 mb-5" id="vids"></div>
+						<h3 class="fw-bold mb-3">Latest articles</h3>
+						<div class="row g-4" id="posts"></div>
+					</div>
+				</section>
+			</div>
+
+			<!-- FAQ -->
+			<div class="page" id="faq">
+				<header class="hero text-center">
+					<div class="container">
+						<h1 class="fw-bold">Frequently asked <span class="text-grad">questions</span></h1>
+					</div>
+				</header>
+				<section class="s">
+					<div class="container" style="max-width:800px">
+						<div class="accordion faq" id="faq-all"></div>
+						<p class="text-center mt-4">Still stuck? <a href="#contact">Contact us</a></p>
+					</div>
+				</section>
+			</div>
+
+			<!-- CONTACT -->
+			<div class="page" id="contact">
+				<header class="hero text-center">
+					<div class="container">
+						<h1 class="fw-bold">Get in <span class="text-grad">touch</span></h1>
+						<p class="lead">Questions, support or partnership applications.</p>
+					</div>
+				</header>
+				<section class="s">
+					<div class="container">
+						<div class="row g-5">
+							<div class="col-lg-7">
+								<form id="cform" novalidate>
+									<div class="mb-3"><label class="form-label" for="cn">Name</label><input id="cn"
+											class="form-control" required></div>
+									<div class="mb-3"><label class="form-label" for="ce">Email</label><input id="ce"
+											type="email" class="form-control" required></div>
+									<div class="mb-3"><label class="form-label" for="cs">Topic</label><select id="cs"
+											class="form-select">
+											<option>Support</option>
+											<option>Sales</option>
+											<option>Become a Partner</option>
+											<option>Other</option>
+										</select></div>
+									<div class="mb-3"><label class="form-label" for="cm">Message</label><textarea
+											id="cm" rows="5" class="form-control" required></textarea></div>
+									<button class="btn btn-grad">Send message</button>
+									<div id="cok" class="alert alert-success mt-3 d-none">Thanks! We'll get back to you
+										soon. <span class="ph">(Demo: connect to backend)</span></div>
+								</form>
+							</div>
+							<div class="col-lg-5">
+								<div class="card-x">
+									<h5>Support</h5>
+									<p><i class="bi bi-envelope me-2"></i><span
+											class="ph">[support@autopostbot.com]</span></p>
+									<p><i class="bi bi-clock me-2"></i><span class="ph">[Support hours]</span></p>
+									<p class="mb-0"><i class="bi bi-question-circle me-2"></i><a href="#faq">Browse
+											FAQs</a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+
+			<!-- AUTH -->
+			<div class="page" id="auth">
+				<section class="s">
+					<div class="container" style="max-width:440px">
+						<div class="text-center mb-4"><img src="assets/logo.png" width="64" class="rounded-circle"
+								alt="">
+							<h2 class="fw-bold mt-2">Welcome</h2>
+						</div>
+						<ul class="nav nav-pills nav-fill mb-3">
+							<li class="nav-item"><button class="nav-link active" data-bs-toggle="pill"
+									data-bs-target="#lg">Log in</button></li>
+							<li class="nav-item"><button class="nav-link" data-bs-toggle="pill"
+									data-bs-target="#rg">Register</button></li>
+						</ul>
+						<div class="tab-content card-x">
+							<form class="tab-pane fade show active authf" id="lg"><label class="form-label">Email<input
+										type="email" class="form-control" required></label><label
+									class="form-label w-100">Password<input type="password" class="form-control"
+										required></label><button class="btn btn-grad w-100 mt-2">Log in</button></form>
+							<form class="tab-pane fade authf" id="rg"><label class="form-label w-100">Name<input
+										class="form-control" required></label><label
+									class="form-label w-100">Email<input type="email" class="form-control"
+										required></label><label class="form-label w-100">Password<input type="password"
+										class="form-control" minlength="8" required></label><button
+									class="btn btn-grad w-100 mt-2">Create account</button>
+								<p class="small text-secondary mt-2 mb-0">By registering you agree to our <a
+										href="#terms">Terms</a> and <a href="#privacy">Privacy Policy</a>.</p>
+							</form>
+						</div>
+						<p class="small text-center text-secondary mt-3"><span class="ph">Demo forms: connect to your
+								auth backend</span></p>
+					</div>
+				</section>
+			</div>
+
+			<!-- PRIVACY -->
+			<!-- <div class="page" id="privacy">
+				<header class="hero text-center">
+					<div class="container">
+						<h1 class="fw-bold">Privacy Policy</h1>
+					</div>
+				</header>
+				<section class="s legal">
+					<div class="container" style="max-width:800px">
+						<p class="ph">Template: have this reviewed by a legal professional before launch. Last updated:
+							[date]</p>
+						<h5>1. Information we collect</h5>
+						<p>Account details, connected social account tokens, imported product data, and usage data.</p>
+						<h5>2. How we use it</h5>
+						<p>To operate the service, publish content you authorize, provide support and improve the
+							product.</p>
+						<h5>3. Browser extension</h5>
+						<p>The extension only reads product pages you choose to scrape and sends that data to your
+							account. <span class="ph">[Confirm permissions]</span></p>
+						<h5>4. Third-party platforms</h5>
+						<p>Publishing to Facebook Pages is subject to Meta's terms and permissions you grant.</p>
+						<h5>5. Your rights &amp; contact</h5>
+						<p>Request access or deletion at <span class="ph">[privacy email]</span>.</p>
+					</div>
+				</section>
+			</div> -->
+
+			<!-- TERMS -->
+			<!-- <div class="page" id="terms">
+				<header class="hero text-center">
+					<div class="container">
+						<h1 class="fw-bold">Terms of Service</h1>
+					</div>
+				</header>
+				<section class="s legal">
+					<div class="container" style="max-width:800px">
+						<p class="ph">Template: have this reviewed by a legal professional before launch. Last updated:
+							[date]</p>
+						<h5>1. Acceptance</h5>
+						<p>By using AutoPostBot you agree to these terms.</p>
+						<h5>2. Subscriptions</h5>
+						<p>Plans, billing and cancellation: <span class="ph">[terms]</span>.</p>
+						<h5>3. Acceptable use</h5>
+						<p>You are responsible for content you publish and for complying with affiliate program and
+							platform rules (Shopee, Amazon, Meta).</p>
+						<h5>4. Features &amp; availability</h5>
+						<p>Features marked "Coming soon" are planned and not guaranteed.</p>
+						<h5>5. Partnership Program</h5>
+						<p>Program terms: <span class="ph">[to be provided]</span>.</p>
+						<h5>6. Liability &amp; contact</h5>
+						<p><span class="ph">[Legal terms and contact]</span></p>
+					</div>
+				</section>
+			</div> -->
+		</main>
+
+		<footer>
+			<div class="container">
+				<div class="row g-4">
+					<div class="col-lg-4">
+						<div class="d-flex align-items-center gap-2 text-white fw-bold mb-2"><img src="assets/logo.png"
+								width="32" class="rounded-circle" alt="">AutoPostBot</div>
+						<p class="small">Manage affiliate content and publish to social media from one place.</p>
+						<div class="fs-4 d-flex gap-3"><a href="#" aria-label="Facebook"><i
+									class="bi bi-facebook"></i></a><a href="#" aria-label="YouTube"><i
+									class="bi bi-youtube"></i></a><a href="#" aria-label="Instagram"><i
+									class="bi bi-instagram"></i></a></div>
+					</div>
+					<div class="col-6 col-lg-2"><b class="text-white">Product</b><a href="#features">Features</a><a
+							href="#how">How It Works</a><a href="#pricing">Pricing</a><a href="#partners">Partners</a>
+					</div>
+					<div class="col-6 col-lg-2"><b class="text-white">Learn</b><a href="#blog">Blog &amp;
+							Tutorials</a><a href="#faq">FAQ</a><a href="#about">About Us</a></div>
+					<div class="col-6 col-lg-2"><b class="text-white">Support</b><a href="#contact">Contact Us</a><a
+							href="#auth">Login / Register</a></div>
+					<div class="col-6 col-lg-2"><b class="text-white">Legal</b><a href="/privacy">Privacy Policy</a><a
+							href="/terms">Terms of Service</a></div>
+				</div>
+				<hr>
+				<p class="small text-center mb-0">© <span id="yr"></span> AutoPostBot. All rights reserved.</p>
+			</div>
+		</footer>
+
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+		<script>
+			$(function () {
+				const nav = [['features', 'Features'], ['how', 'How It Works'], ['pricing', 'Pricing'], ['partners', 'Partners'], ['blog', 'Blog'], ['about', 'About'], ['faq', 'FAQ'], ['contact', 'Contact']];
+				const feats = [['bag-check', 'Shopee content', 'Manage Shopee affiliate products.', 1], ['box-seam', 'Amazon content', 'Manage Amazon affiliate products.', 1], ['pencil-square', 'Custom content', 'Create and manage your own posts.', 1], ['puzzle', 'Browser extension', 'Scrape products and send them to your dashboard.', 1], ['facebook', 'Facebook Pages', 'Connect Pages and publish from one place.', 1], ['kanban', 'Central dashboard', 'Review, edit and organize imported content.', 1], ['instagram', 'Instagram', 'Publishing to Instagram.', 0], ['threads', 'Threads', 'Publishing to Threads.', 0], ['youtube', 'YouTube', 'YouTube publishing support.', 0], ['cart4', 'Temu', 'Temu affiliate content.', 0]];
+				const badge = l => l ? '<span class="chip live">Available</span>' : '<span class="chip soon">Coming soon</span>';
+				const fcard = f => `<div class="col-md-6 col-lg-4"><div class="card-x"><div class="ico"><i class="bi bi-${f[0]}"></i></div><div class="d-flex justify-content-between"><h5>${f[1]}</h5>${badge(f[3])}</div><p class="text-secondary mb-0">${f[2]}</p></div></div>`;
+				$('#feat-all').html(feats.map(fcard).join(''));
+				$('#feat-home').html(feats.filter(f => f[3]).map(fcard).join(''));
+				const chip = f => `<div class="col-6 col-md-3"><div class="card-x text-center"><div class="ico mx-auto"><i class="bi bi-${f[0]}"></i></div><b>${f[1]}</b><div class="mt-2">${badge(f[3])}</div></div></div>`;
+				$('#sources').html([feats[0], feats[1], feats[2], feats[9]].map(chip).join(''));
+				$('#socials').html([feats[4], feats[6], feats[7], feats[8]].map(chip).join(''));
+				$('#menu').html(nav.map(n => `<li class="nav-item"><a class="nav-link" href="#${n[0]}">${n[1]}</a></li>`).join(''));
+				const steps = [['Install the extension', 'Add the AutoPostBot extension to your browser right after subscribing.'], ['Choose a source', 'Open your affiliate shop (Shopee or Amazon) and pick products.'], ['Scrape product info', 'Use the extension to collect titles, images, prices and links.'], ['Send to AutoPostBot', 'Push the collected data to your web app in one click.'], ['Manage & publish', 'Edit content and publish to your Facebook Pages from the dashboard.']];
+				$('#steps').html(steps.map((s, i) => `<div class="d-flex gap-3 mb-4"><div class="step-n">${i + 1}</div><div class="card-x w-100"><h5>${s[0]}</h5><p class="text-secondary mb-0">${s[1]}</p></div></div>`).join(''));
+				$('#flow-mini').html(['puzzle|Install', 'shop|Select shop', 'cloud-download|Scrape', 'send|Send', 'megaphone|Publish'].map(x => { x = x.split('|'); return `<div class="col-4"><div class="card-x p-3"><div class="ico mx-auto"><i class="bi bi-${x[0]}"></i></div><b class="small">${x[1]}</b></div></div>` }).join(''));
+				const plans = [['Starter'], ['Pro', 1], ['Business']];
+				$('.plans').html(plans.map(p => `<div class="col-md-4"><div class="card-x price ${p[1] ? 'pop' : ''} text-center">${p[1] ? '<span class="chip soon mb-2">Most popular</span>' : ''}<h4>${p[0]}</h4><div class="display-6 fw-bold my-2"><span class="ph">[$ price]</span></div><p class="text-secondary small">per <span class="ph">[period]</span></p><ul class="list-unstyled text-start small"><li><i class="bi bi-check-circle-fill text-primary"></i> Browser extension</li><li><i class="bi bi-check-circle-fill text-primary"></i> Shopee, Amazon &amp; custom content</li><li><i class="bi bi-check-circle-fill text-primary"></i> Facebook Pages publishing</li><li><i class="bi bi-check-circle-fill text-primary"></i> <span class="ph">[plan limits]</span></li></ul><a href="#auth" class="btn ${p[1] ? 'btn-grad' : 'btn-outline-dark rounded-pill'} w-100">Subscribe</a></div></div>`).join(''));
+				$('#perks').html([['cash-coin', 'Earn commissions', 'Earn <span class="ph">[X%]</span> on referred subscribers.'], ['stars', 'Exclusive benefits', 'Partner-only perks <span class="ph">[to be announced]</span>.'], ['graph-up-arrow', 'Grow your income', 'Monetize your audience by sharing a tool they need.'], ['people', 'Join the community', 'Connect with other AutoPostBot partners.']].map(p => `<div class="col-md-6 col-lg-3"><div class="card-x"><div class="ico"><i class="bi bi-${p[0]}"></i></div><h5>${p[1]}</h5><p class="text-secondary mb-0">${p[2]}</p></div></div>`).join(''));
+				$('#testi').html([1, 2, 3].map(i => `<div class="col-md-4"><div class="card-x"><div class="text-warning mb-2">★★★★★</div><p class="ph d-block">"[Testimonial ${i}: real customer feedback goes here]"</p><b>[Name]</b><div class="small text-secondary">[Role / channel]</div></div></div>`).join(''));
+				$('#vids').html(['Getting started', 'Installing the extension', 'Publishing to Facebook'].map(t => `<div class="col-md-4"><div class="card-x p-0 overflow-hidden"><div class="ratio ratio-16x9 text-white d-grid" style="background:var(--navy);place-items:center"><i class="bi bi-play-circle fs-1"></i></div><div class="p-3"><b>${t}</b><div class="small ph">[YouTube embed / link]</div></div></div></div>`).join(''));
+				$('#posts').html(['How to choose affiliate products that convert', 'Product update: What\'s new', 'Facebook Page publishing best practices'].map(t => `<div class="col-md-4"><div class="card-x"><span class="chip soon mb-2">Article</span><h5>${t}</h5><p class="small text-secondary ph d-block">[Excerpt placeholder]</p><a href="#blog">Read more →</a></div></div>`).join(''));
+				const faqs = [['What is AutoPostBot?', 'A web app to manage affiliate content (Shopee, Amazon, custom) and publish to Facebook Pages, paired with a browser extension.'], ['Do I need the browser extension?', 'Yes. It scrapes products from your chosen shop and sends them to the web app, where you manage and publish.'], ['Which affiliate sources are supported?', 'Shopee, Amazon and custom content today. Temu is coming soon.'], ['Which social platforms can I publish to?', 'Facebook Pages today. Instagram, Threads, YouTube and others are coming soon.'], ['How do subscriptions work?', 'Choose a plan on the Pricing page. Billing details: [to be provided].'], ['How do I join the Partnership Program?', 'Visit the Partnership page and apply via Become a Partner. Commission details: [to be provided].']];
+				const acc = (id, list) => $(id).html(list.map((f, i) => `<div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#${id.slice(1)}${i}">${f[0]}</button></h3><div id="${id.slice(1)}${i}" class="accordion-collapse collapse" data-bs-parent="${id}"><div class="accordion-body">${f[1]}</div></div></div>`).join(''));
+				acc('#faq-home', faqs.slice(0, 4)); acc('#faq-all', faqs); acc('#faq-partner', [faqs[5], ['What are the commission rates?', '[Placeholder: rates to be announced.]'], ['When and how are partners paid?', '[Placeholder: payment terms to be announced.]']]);
+				function route() { let h = location.hash.slice(1) || 'home'; if (!$('#' + h + '.page').length) h = 'home'; $('.page').removeClass('on'); $('#' + h).addClass('on'); $('.nav-link').removeClass('active').filter('[href="#' + h + '"]').addClass('active'); $('#nv').collapse('hide'); window.scrollTo(0, 0); document.title = (h == 'home' ? 'AutoPostBot – Affiliate Content & Social Publishing' : h.charAt(0).toUpperCase() + h.slice(1) + ' | AutoPostBot') }
+				$(window).on('hashchange', route); route();
+				$('#cform,.authf').on('submit', function (e) { e.preventDefault(); const ok = this.checkValidity(); $(this).addClass('was-validated'); if (ok && this.id == 'cform') $('#cok').removeClass('d-none') });
+				$('#yr').text(new Date().getFullYear());
+			});
+		</script>
+	</body>
+
+</html>
