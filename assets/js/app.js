@@ -129,7 +129,7 @@ $(function () {
         ["How do subscriptions work?", "Choose a plan on the Pricing page."],
         [
             "How do I join the Partnership Program?",
-            "Visit the Partnership page and apply via Become a Partner.",
+			"<a class='a-link' href='#contact'>Contact us via email</a> with the subject <b>Become a Partner</b>, and we'll get back to you with your personalized partner registration link.",
         ],
     ];
     const acc = (id, list) =>
@@ -145,8 +145,8 @@ $(function () {
     acc("#faq-all", faqs);
     acc("#faq-partner", [
         faqs[5],
-        ["What are the commission rates?", "[Placeholder: rates to be announced.]"],
-        ["When and how are partners paid?", "[Placeholder: payment terms to be announced.]"],
+		["What are the commission rates?", "Commission rates range from 3% to 10%, depending on how frequently you refer and invite new customers."],
+		["When and how are partners paid?", "Get paid via PayPal or Wise when your balance reaches $10 or every 30 days, based on your selected payout preference.."],
     ]);
     /* function route() {
         let h = location.hash.slice(1) || "home";
@@ -166,16 +166,35 @@ $(function () {
     }
     $(window).on("hashchange", route);
     route(); */
-	$(".nav-link").on("click", (e) => {
-		e.preventDefault();
-		let oThis = $(e.target);
-		if (oThis.prop("tagName") != "A") oThis = oThis.closest("a");
-		let h = oThis.attr("href").slice(1) || "home";
+	$(".nav-link, .a-link").on("click", route);
+	function route(e) {
+		if (window.location.hash) {
+			// Example: Select an element matching the hash ID
+			var h = window.location.hash.slice(1) || "home";
+		} else {
+			e.preventDefault();
+			var oThis = $(e.target);
+			if (oThis.prop("tagName") != "A") oThis = oThis.closest("a");
+			var h = oThis.attr("href").slice(1) || "home";
+		}
+		
 		if (!$("#" + h + ".page").length) h = "home";
-		$('html, body').animate({
+
+		$(".nav-link")
+			.removeClass("active")
+			.filter('[href="#' + h + '"]')
+			.addClass("active");
+		$("#nv").collapse("hide");
+
+		$('html, body').stop().animate({
 			scrollTop: $("#" + h + ".page").offset().top - 60
-		}, 800)
-	});
+		}, 800, function () {
+			// CALLBACK: Runs instantly once the scroll animation finishes
+			// Removes the hash marker from the address bar gracefully
+			history.replaceState(null, null, window.location.pathname + window.location.search);
+		});
+	}
+	route();
     $("#cform,.authf").on("submit", function (e) {
         e.preventDefault();
         const ok = this.checkValidity();
