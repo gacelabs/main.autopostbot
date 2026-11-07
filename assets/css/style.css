@@ -15,6 +15,10 @@ body {
 	padding-top: 60px;
 }
 
+#menu {
+	align-items: flex-end;
+}
+
 .navbar {
 	background: rgba(6, 23, 58, .97);
 	backdrop-filter: blur(8px)
