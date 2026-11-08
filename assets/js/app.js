@@ -232,7 +232,7 @@ $(function () {
 		var domain = window.location.host.replace('.main', '.com');
 		var correctLink = protocol + domain;
 	} else {
-		var domain = window.location.host.replace(protocol, protocol + 'app.');
+		var domain = 'app.' + window.location.host;
 		var correctLink = protocol + domain;
 	}
 	// console.log(correctLink);
