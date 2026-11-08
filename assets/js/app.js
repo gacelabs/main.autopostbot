@@ -37,7 +37,13 @@ $(function () {
     $("#sources").html([feats[0], feats[1], feats[2], feats[8]].map(chip).join(""));
     $("#socials").html([feats[4], feats[6], feats[7]].map(chip).join(""));
     $("#menu").html(
-        nav.map((n) => `<li class="nav-item"><a class="nav-link" href="#${n[0]}">${n[1]}</a></li>`).join("")
+        nav.map((n) => {
+			if (n[0] == 'blog') {
+				return `<li class="nav-item"><a class="nav-link ignore" href="/${n[0]}/">${n[1]}</a></li>`;
+			} else {
+				return `<li class="nav-item"><a class="nav-link" href="#${n[0]}">${n[1]}</a></li>`;
+			}
+		}).join("")
     );
     const steps = [
         ["Install the extension", "Add the AutoPostBot extension to your browser right after subscribing."],
@@ -166,7 +172,9 @@ $(function () {
     }
     $(window).on("hashchange", route);
     route(); */
-	$(".nav-link, .a-link").on("click", route);
+
+	$(".nav-link:not(.ignore), .a-link:not(.ignore)").on("click", route);
+
 	function route(e) {
 		if (window.location.hash) {
 			// Example: Select an element matching the hash ID
@@ -177,29 +185,34 @@ $(function () {
 			if (oThis.prop("tagName") != "A") oThis = oThis.closest("a");
 			var h = oThis.attr("href").slice(1) || "home";
 		}
-		
-		if (!$("#" + h + ".page").length) h = "home";
 
-		$(".nav-link")
-			.removeClass("active")
-			.filter('[href="#' + h + '"]')
-			.addClass("active");
-		$("#nv").collapse("hide");
-
-		$('html, body').stop().animate({
-			scrollTop: $("#" + h + ".page").offset().top - 60
-		}, 800, function () {
-			// CALLBACK: Runs instantly once the scroll animation finishes
-			// Removes the hash marker from the address bar gracefully
-			history.replaceState(null, null, window.location.pathname + window.location.search);
-		});
+		if (h !== 'blog/') {
+			if (!$("#" + h + ".page").length) h = "home";
+	
+			$(".nav-link")
+				.removeClass("active")
+				.filter('[href="#' + h + '"]')
+				.addClass("active");
+			$("#nv").collapse("hide");
+	
+			$('html, body').stop().animate({
+				scrollTop: $("#" + h + ".page").offset().top - 60
+			}, 800, function () {
+				// CALLBACK: Runs instantly once the scroll animation finishes
+				// Removes the hash marker from the address bar gracefully
+				history.replaceState(null, null, window.location.pathname + window.location.search);
+			});
+		}
 	}
-	route();
+
+	if (window.location.hash) route();
+
     $("#cform,.authf").on("submit", function (e) {
         e.preventDefault();
         const ok = this.checkValidity();
         $(this).addClass("was-validated");
         if (ok && this.id == "cform") $("#cok").removeClass("d-none");
     });
+
     $("#yr").text(new Date().getFullYear());
 });
