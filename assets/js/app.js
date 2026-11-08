@@ -68,12 +68,12 @@ $(function () {
             })
             .join("")
     );
-    const plans = [["Basic", 0, 1, '3 Automations'], ["Professional", 1, 9, '15 Automations'], ["Enterprise", 0, 25, 'Unlimited']];
+	const plans = [["Basic", 0, 1, '3 Automation sets', 0, 'Perfect for beginners'], ["Professional", 1, 9, '15 Automation sets', 0, 'Best for creators and growing brands'], ["Enterprise", 0, 25, 'Unlimited', 1, 'Built for agencies and power users']];
     $(".plans").html(
         plans
             .map(
                 (p) =>
-                    `<div class="col-md-4"><div class="card-x price ${p[1] ? "pop" : ""} text-center">${p[1] ? '<span class="chip soon mb-2">Most popular</span>' : ""}<h4>${p[0]}</h4><div class="display-6 fw-bold my-2"><span class="ph">$ ${p[2]}</span></div><p class="text-secondary small">per <span class="ph">month</span></p><ul class="list-unstyled text-start small"><li><i class="bi bi-check-circle-fill text-primary"></i> Browser extension</li><li><i class="bi bi-check-circle-fill text-primary"></i> Shopee, Amazon &amp; custom content</li><li><i class="bi bi-check-circle-fill text-primary"></i> Social media publishing</li><li><i class="bi bi-check-circle-fill text-primary"></i> <span class="ph">${p[3]}</span></li></ul><a href="#auth" class="btn ${p[1] ? "btn-grad" : "btn-outline-dark rounded-pill"} w-100">Subscribe</a></div></div>`
+					`<div class="col-md-4"><div class="card-x price ${p[1] ? "pop" : ""} text-center">${p[1] ? '<span class="chip soon mb-2">Most popular</span>' : ""}<h4>${p[0]}</h4><div class="display-6 fw-bold my-2"><span class="ph">$ ${p[2]}</span></div><p class="text-secondary small">per <span class="ph">month</span></p><h6 class="text-grad fw-bold">${p[5]}</h6><ul class="list-unstyled text-start small"><li><i class="bi bi-check-circle-fill text-primary"></i> Browser extension</li><li><i class="bi bi-check-circle-fill text-primary"></i> Shopee, Amazon &amp; custom content</li><li><i class="bi bi-check-circle-fill text-primary"></i> Social media publishing</li><li><i class="bi bi-check-circle-fill text-primary"></i> <span class="ph">${p[3]}</span></li></ul>${p[4] ? `<a href="javascript:;" class="btn ${p[1] ? "btn-grad" : "btn btn-warning rounded-pill fw-bold"} w-100">SOON</a>` : `<a href="#auth" class="btn ${p[1] ? "btn-grad" : "btn-outline-dark rounded-pill"} w-100">Subscribe</a>`}</div></div>`
             )
             .join("")
     );
