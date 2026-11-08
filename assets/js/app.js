@@ -73,7 +73,7 @@ $(function () {
         plans
             .map(
                 (p) =>
-					`<div class="col-md-4"><div class="card-x price ${p[1] ? "pop" : ""} text-center">${p[1] ? '<span class="chip soon mb-2">Most popular</span>' : ""}<h4>${p[0]}</h4><div class="display-6 fw-bold my-2"><span class="ph">$ ${p[2]}</span></div><p class="text-secondary small">per <span class="ph">month</span></p><h6 class="text-grad fw-bold">${p[5]}</h6><ul class="list-unstyled text-start small"><li><i class="bi bi-check-circle-fill text-primary"></i> Browser extension</li><li><i class="bi bi-check-circle-fill text-primary"></i> Shopee, Amazon &amp; custom content</li><li><i class="bi bi-check-circle-fill text-primary"></i> Social media publishing</li><li><i class="bi bi-check-circle-fill text-primary"></i> <span class="ph">${p[3]}</span></li></ul>${p[4] ? `<a href="javascript:;" class="btn ${p[1] ? "btn-grad" : "btn btn-warning rounded-pill fw-bold"} w-100">SOON</a>` : `<a href="#auth" class="btn ${p[1] ? "btn-grad" : "btn-outline-dark rounded-pill"} w-100">Subscribe</a>`}</div></div>`
+					`<div class="col-md-4"><div class="card-x price ${p[1] ? "pop" : ""} text-center">${p[1] ? '<span class="chip soon mb-2">Most popular</span>' : ""}<h4>${p[0]}</h4><div class="display-6 fw-bold my-2"><span class="ph">$ ${p[2]}</span></div><p class="text-secondary small">per <span class="ph">month</span></p><h6 class="text-grad fw-bold">${p[5]}</h6><ul class="list-unstyled text-start small"><li><i class="bi bi-check-circle-fill text-primary"></i> Browser extension</li><li><i class="bi bi-check-circle-fill text-primary"></i> Shopee, Amazon &amp; custom content</li><li><i class="bi bi-check-circle-fill text-primary"></i> Social media publishing</li><li><i class="bi bi-check-circle-fill text-primary"></i> <span class="ph">${p[3]}</span></li></ul>${p[4] ? `<a href="javascript:;" class="btn ${p[1] ? "btn-grad" : "btn btn-warning rounded-pill fw-bold"} w-100">SOON</a>` : `<a href="#authf" class="btn ${p[1] ? "btn-grad" : "btn-outline-dark rounded-pill"} w-100">Subscribe</a>`}</div></div>`
             )
             .join("")
     );
@@ -176,27 +176,47 @@ $(function () {
 	$(".nav-link:not(.ignore), .a-link:not(.ignore)").on("click", route);
 
 	function route(e) {
+		var form = $('form.authf.active').attr('id');
 		if (window.location.hash) {
 			// Example: Select an element matching the hash ID
 			var h = window.location.hash.slice(1) || "home";
 		} else {
 			e.preventDefault();
 			var oThis = $(e.target);
-			if (oThis.prop("tagName") != "A") oThis = oThis.closest("a");
-			var h = oThis.attr("href").slice(1) || "home";
+			if (oThis.prop("tagName") == 'BUTTON') {
+				var h = "authf";
+			} else {
+				if (oThis.prop("tagName") != "A") {
+					oThis = oThis.closest("a");
+				}
+				var h = (oThis.attr("href").slice(1) || "home") + ".page";
+			}
 		}
+		// console.error(oThis, h, form);
 
-		if (h !== 'blog/') {
-			if (!$("#" + h + ".page").length) h = "home";
-	
-			$(".nav-link")
-				.removeClass("active")
-				.filter('[href="#' + h + '"]')
-				.addClass("active");
-			$("#nv").collapse("hide");
+		if (typeof h != 'undefined' && h !== 'blog/') {
+			if (!$("#" + h).length) h = "home";
+			
+			if ($("#" + h).length) {
+				$(".nav-link")
+					.removeClass("active")
+					.filter('[href="#' + h + '"]')
+					.addClass("active");
+				$("#nv").collapse("hide");
+				if (h == 'contact.page') {
+					$("#cform").find('[name="name"]').focus();
+				}
+			}
+			if (form) {
+				$("button.nav-link")
+					.removeClass("active")
+					.filter('[data-bs-target="#' + form + '"]')
+					.addClass("active");
+				$("#" + form).find(form == 'lg' ? '[name="email"]' : '[name="name"]').focus();
+			}
 	
 			$('html, body').stop().animate({
-				scrollTop: $("#" + h + ".page").offset().top - 60
+				scrollTop: $("#" + h).offset().top - 60
 			}, 800, function () {
 				// CALLBACK: Runs instantly once the scroll animation finishes
 				// Removes the hash marker from the address bar gracefully
@@ -207,12 +227,93 @@ $(function () {
 
 	if (window.location.hash) route();
 
-    $("#cform,.authf").on("submit", function (e) {
+	var protocol = window.location.protocol + '//';
+	if (window.location.host.indexOf('local.') >= 0) {
+		var domain = window.location.host.replace('.main', '.com');
+		var correctLink = protocol + domain;
+	} else {
+		var domain = window.location.host.replace(protocol, protocol + 'app.');
+		var correctLink = protocol + domain;
+	}
+	// console.log(correctLink);
+	$('a#gg-form').attr('href', correctLink + $('a#gg-form').attr('href'));
+	$('#lg').attr('href', correctLink + $('#lg').attr('href'));
+	$('#rg').attr('href', correctLink + $('#rg').attr('href'));
+	$('#cform').attr('action', correctLink + $('#cform').attr('action'));
+
+    /* $("#cform,.authf").on("submit", function (e) {
         e.preventDefault();
         const ok = this.checkValidity();
         $(this).addClass("was-validated");
-        if (ok && this.id == "cform") $("#cok").removeClass("d-none");
+        if (ok && this.id == "cform") $("#cok").removeClass("d-none"); this.submit();
+		if (ok && this.id == "authf") $("#aok").removeClass("d-none"); this.submit();
+    }); */
+
+    $("#cform").on("submit", function (e) {
+        e.preventDefault();
+        const ok = this.checkValidity();
+        $(this).addClass("was-validated");
+        if (ok && this.id == "cform") {
+			$("#cok").removeClass("d-none"); 
+			// this.submit();
+			// function t() { const array = new Uint8Array(32); window.crypto.getRandomValues(array); return Array.from(array, byte => byte.toString(16).padStart(2, '0')).join(''); }
+			function t(length = 40) {
+				const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+				let result = '';
+				// Uses the browser's built-in secure crypto engine
+				const randomValues = new Uint32Array(length);
+				window.crypto.getRandomValues(randomValues);
+				for (let i = 0; i < length; i++) {
+					result += chars[randomValues[i] % chars.length];
+				}
+				return result;
+			}
+			$.ajax({
+				url: this.action,
+				type: 'GET',
+				contentType: 'application/json',
+				dataType: 'json',
+				data: $(this).serialize(),
+				headers: { 
+					'Accept': 'application/json',
+					// 'X-CSRF-Token': t(),
+					'Authorization': 'Bearer ' +  t(),
+				},
+				success: function (response) {
+					console.log('Success:', response);
+				},
+				error: function (xhr, status, error) {
+					console.error('Error:', error);
+				}
+			});
+
+			/* $.ajax({
+				url: correctLink,
+				method: 'GET',
+				xhrFields: { withCredentials: true } // Allows browser to receive the cookie
+			}).done(function () {
+				// Step 2: Now securely submit the form via POST
+				$.ajax({
+					url: this.action,
+					method: 'POST',
+					dataType: 'json',
+					data: $(this).serialize(),
+					xhrFields: { withCredentials: true }, // Sends the acquired cookie back
+					headers: {
+						'Accept': 'application/json'
+					},
+					success: function (response) {
+						alert('Form submitted successfully!');
+					},
+					error: function (xhr) {
+						console.error(xhr.responseJSON);
+					}
+				});
+
+			}); */
+		}
     });
+
 
     $("#yr").text(new Date().getFullYear());
 });

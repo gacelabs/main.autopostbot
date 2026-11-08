@@ -22,7 +22,7 @@
 					aria-label="Toggle menu"><i class="bi bi-list text-white fs-2"></i></button>
 				<div class="navbar-collapse collapse text-center" id="nv">
 					<ul class="navbar-nav mx-auto" id="menu"></ul>
-					<a href="#auth" class="a-link text-white me-3 text-decoration-none fw-semibold">Sign in</a>
+					<a href="#authf" class="a-link text-white me-3 text-decoration-none fw-semibold">Sign in</a>
 					<a href="#pricing" class="a-link btn btn-grad btn-sm">Get Started</a>
 				</div>
 			</div>
@@ -45,7 +45,7 @@
 								<div class="mock">
 									<div class="bar"><i class="bi bi-circle-fill text-danger"></i> <i
 											class="bi bi-circle-fill text-warning"></i> <i
-											class="bi bi-circle-fill text-success"></i> &nbsp; app.autopostbot.com</div>
+											class="bi bi-circle-fill text-success"></i> &nbsp; app.autopostbot.click</div>
 									<div class="p-4">
 										<div class="d-flex justify-content-between mb-3"><strong>Content
 												Queue</strong><span class="chip live">3 ready</span></div>
@@ -410,20 +410,28 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-lg-7">
-								<form id="cform" novalidate>
-									<div class="mb-3"><label class="form-label" for="name">Name</label><input id="name"
-											class="form-control" required></div>
-									<div class="mb-3"><label class="form-label" for="email">Email</label><input id="email"
-											type="email" class="form-control" required></div>
-									<div class="mb-3"><label class="form-label" for="subject">Subject</label><select id="subject"
-											class="form-select">
-											<option>Support</option>
-											<option>Sales</option>
-											<option>Become a Partner</option>
-											<option>Other</option>
-										</select></div>
-									<div class="mb-3"><label class="form-label" for="cm">Message</label><textarea
-											name="message" rows="5" class="form-control" required></textarea></div>
+								<form action="/contact-us" id="cform" novalidate>
+									<div class="mb-3">
+										<label class="form-label" for="name">Name</label>
+										<input id="name" name="name" class="form-control" required>
+									</div>
+									<div class="mb-3">
+										<label class="form-label" for="email">Email</label>
+										<input id="email" name="email" type="email" class="form-control" required>
+									</div>
+									<div class="mb-3">
+										<label class="form-label" for="subject">Subject</label>
+										<select id="subject" class="form-select">
+											<option value="partner">Become a Partner</option>
+											<option value="legal">Legal</option>
+											<option value="support">Support</option>
+											<option value="hello">Other</option>
+										</select>
+									</div>
+									<div class="mb-3">
+										<label class="form-label" for="cm">Message</label>
+										<textarea name="message" rows="5" class="form-control" required></textarea>
+									</div>
 									<button class="btn btn-grad">Send message</button>
 									<div id="cok" class="alert alert-success mt-3 d-none">
 										Thanks! We'll get back to you soon.
@@ -432,7 +440,7 @@
 							</div>
 							<div class="col-lg-5">
 								<div class="card-x">
-									<h5>Support</h5>
+									<h5>General</h5>
 									<p><i class="bi bi-envelope me-2"></i><span class="ph">gacelabs.inc@gmail.com</span></p>
 									<!-- <p><i class="bi bi-clock me-2"></i><span class="ph">24 Hours</span></p> -->
 									<p class="mb-0"><i class="bi bi-question-circle me-2"></i><a class="a-link" href="#faq">Browse FAQs</a></p>
@@ -447,20 +455,20 @@
 			<div class="page" id="auth">
 				<section class="s" style="padding-top: 1rem; padding-bottom: 2rem;">
 					<div class="container" style="max-width:440px">
-						<div class="text-center mb-4">
+						<div class="text-center mb-4 page" id="authf">
 							<img src="assets/images/logo.png" width="64" class="rounded-circle" alt="">
 							<h2 class="fw-bold mt-2">Welcome</h2>
 						</div>
-						<ul class="nav nav-pills nav-fill mb-3">
+						<!-- <ul class="nav nav-pills nav-fill mb-3">
 							<li class="nav-item">
 								<button class="nav-link active" data-bs-toggle="pill" data-bs-target="#lg">Sign in</button>
 							</li>
 							<li class="nav-item">
 								<button class="nav-link" data-bs-toggle="pill" data-bs-target="#rg">Sign up</button>
 							</li>
-						</ul>
+						</ul> -->
 						<div class="tab-content card-x">
-							<form class="tab-pane fade show active authf" id="lg">
+							<!-- <form method="POST" action="/login" class="tab-pane fade show active authf" id="lg" novalidate>
 								<label class="form-label w-100">
 									Email
 									<input name="email" type="email" class="form-control" required>
@@ -471,7 +479,7 @@
 								</label>
 								<button class="btn btn-grad w-100 mt-2">Sign in</button>
 							</form>
-							<form class="tab-pane fade authf" id="rg">
+							<form method="POST" action="/register" class="tab-pane fade authf" id="rg" novalidate>
 								<label class="form-label w-100">
 									Name
 									<input name="name" type="text" class="form-control" required>
@@ -490,7 +498,19 @@
 									<a href="#terms">Terms</a> and
 									<a href="#privacy">Privacy Policy</a>.
 								</p>
-							</form>
+							</form> -->
+							<a href="/login" id="lg" class="btn btn-grad w-100 mt-2">Sign in</a>
+							<a href="/register" id="rg" class="btn btn-grad w-100 mt-2">Create account</a>
+							<a href="/auth/google/redirect" id="gg-form" class="btn btn-outline-dark rounded-pill w-100 mt-2">
+								<svg aria-hidden="true" height="18" width="18" focusable="false" viewBox="0 0 24 24"><clipPath id="_BGboasXfC6OShvcPqMeriQw_1"><path d="M12 10v4.5h6.47c-.5 2.7-3 4.74-6.47 4.74-3.9 0-7.1-3.3-7.1-7.25S8.1 4.75 12 4.75c1.8 0 3.35.6 4.6 1.8l3.4-3.4C18 1.2 15.24 0 12 0 5.4 0 0 5.4 0 12s5.4 12 12 12c7 0 11.5-4.9 11.5-11.7 0-.8-.1-1.54-.2-2.3H12z"></path></clipPath><g style="clip-path:url(#_BGboasXfC6OShvcPqMeriQw_1)"><foreignObject style="filter:url(#_BGboasXfC6OShvcPqMeriQw_2)" height="28" transform="translate(-2,-2)" width="28"><div style="width:100%;height:100%;background:conic-gradient(#FF4641,#FD5061 40deg,#FD5061 60deg,#3186FF 85deg,#3186FF 117deg,#00A5B7 142deg,#0EBC5F 167deg,#0EBC5F 200deg,#6CC500 226deg,#FFCC00 253deg,#FFD314 268deg,#FFCC00 292deg,#FF4641 327deg)"></div></foreignObject><rect fill="#3186FF" height="8" width="16" x="11" y="8"></rect></g></svg>
+								<span class="text-danger">Continue with Google</span>
+							</a>
+							<p class="small text-secondary mt-2 mb-0" style="font-size: 13px; text-align: center;">
+								Secure authentication. Your affiliate and social credentials are managed server-side.
+							</p>
+							<div id="aok" class="alert alert-success mt-3 d-none">
+								Thanks! We'll get back to you soon.
+							</div>
 						</div>
 						<!-- <p class="small text-center text-secondary mt-3">
 							<span class="ph">Demo forms: connect to your auth backend</span>
