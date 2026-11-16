@@ -11,6 +11,8 @@
 		<link href="assets/css/bootstrap-icons.min.css" rel="stylesheet">
 		<link href="assets/css/fonts.css" rel="stylesheet">
 		<link rel="stylesheet" href="assets/css/style.css">
+		<link rel="preconnect" href="https://challenges.cloudflare.com" />
+		<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 	</head>
 
 	<body>
@@ -410,7 +412,10 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-lg-7">
-								<form action="/contact-us" id="cform" novalidate>
+								<form action="/contact-us" id="cform" novalidate><!-- Honeypot trap for basic bots -->
+									<div style="display:none;">
+										<input type="text" name="website_url" tabindex="-1" autocomplete="off">
+									</div>
 									<div class="mb-3">
 										<label class="form-label" for="name">Name</label>
 										<input id="name" name="name" class="form-control" required>
@@ -421,9 +426,10 @@
 									</div>
 									<div class="mb-3">
 										<label class="form-label" for="subject">Subject</label>
-										<select id="subject" class="form-select">
+										<select id="subject" name="subject" class="form-select" required>
+											<option value="">Select a subject</option>
 											<option value="partner">Become a Partner</option>
-											<option value="legal">Legal</option>
+											<!-- <option value="legal">Legal</option> -->
 											<option value="support">Support</option>
 											<option value="hello">Other</option>
 										</select>
@@ -432,8 +438,15 @@
 										<label class="form-label" for="cm">Message</label>
 										<textarea name="message" rows="5" class="form-control" required></textarea>
 									</div>
-									<button class="btn btn-grad">Send message</button>
-									<div id="cok" class="alert alert-success mt-3 d-none">
+									<ul class="nav nav-pills nav-fill mb-3" style="align-items: center;">
+										<li class="nav-item">
+											<div class="cf-turnstile" data-sitekey="0x4AAAAAAGDED0GLDltMv_Z3" data-theme="light" data-size="normal"></div>
+										</li>
+										<li class="nav-item">
+											<button class="btn btn-grad">Send message</button>
+										</li>
+									</ul>
+									<div id="cok" class="alert mt-3 d-none">
 										Thanks! We'll get back to you soon.
 									</div>
 								</form>
@@ -459,14 +472,6 @@
 							<img src="assets/images/logo.png" width="64" class="rounded-circle" alt="">
 							<h2 class="fw-bold mt-2">Welcome</h2>
 						</div>
-						<!-- <ul class="nav nav-pills nav-fill mb-3">
-							<li class="nav-item">
-								<button class="nav-link active" data-bs-toggle="pill" data-bs-target="#lg">Sign in</button>
-							</li>
-							<li class="nav-item">
-								<button class="nav-link" data-bs-toggle="pill" data-bs-target="#rg">Sign up</button>
-							</li>
-						</ul> -->
 						<div class="tab-content card-x">
 							<a href="/login" id="lg" class="btn btn-grad w-100 mt-2">Sign in</a>
 							<a href="/register" id="rg" class="btn btn-grad w-100 mt-2">Create account</a>

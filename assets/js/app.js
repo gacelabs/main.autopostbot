@@ -242,7 +242,7 @@ $(function () {
 	$('#lg').attr('href', correctAppLink + $('#lg').attr('href'));
 	$('#rg').attr('href', correctAppLink + $('#rg').attr('href'));
 	// $('#bp').attr('href', correctBlogLink + $('#bp').attr('href'));
-	$('#cform').attr('action', correctAppLink + $('#cform').attr('action'));
+	$('#cform').attr('action', correctAppLink + '/api' + $('#cform').attr('action'));
 
     /* $("#cform,.authf").on("submit", function (e) {
         e.preventDefault();
@@ -257,66 +257,39 @@ $(function () {
         const ok = this.checkValidity();
         $(this).addClass("was-validated");
         if (ok && this.id == "cform") {
-			$("#cok").removeClass("d-none"); 
-			// this.submit();
-			// function t() { const array = new Uint8Array(32); window.crypto.getRandomValues(array); return Array.from(array, byte => byte.toString(16).padStart(2, '0')).join(''); }
-			function t(length = 40) {
-				const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-				let result = '';
-				// Uses the browser's built-in secure crypto engine
-				const randomValues = new Uint32Array(length);
-				window.crypto.getRandomValues(randomValues);
-				for (let i = 0; i < length; i++) {
-					result += chars[randomValues[i] % chars.length];
-				}
-				return result;
-			}
-			$.ajax({
-				url: this.action,
-				type: 'GET',
-				contentType: 'application/json',
-				dataType: 'json',
-				data: $(this).serialize(),
-				headers: { 
-					'Accept': 'application/json',
-					// 'X-CSRF-Token': t(),
-					'Authorization': 'Bearer ' +  t(),
-				},
-				success: function (response) {
-					console.log('Success:', response);
-				},
-				error: function (xhr, status, error) {
-					console.error('Error:', error);
-				}
-			});
+			const formData = new FormData(this);
+			$("#cok").removeClass('alert-danger').removeClass('alert-success');
 
-			/* $.ajax({
-				url: correctAppLink,
-				method: 'GET',
-				xhrFields: { withCredentials: true } // Allows browser to receive the cookie
-			}).done(function () {
-				// Step 2: Now securely submit the form via POST
-				$.ajax({
-					url: this.action,
-					method: 'POST',
-					dataType: 'json',
-					data: $(this).serialize(),
-					xhrFields: { withCredentials: true }, // Sends the acquired cookie back
-					headers: {
-						'Accept': 'application/json'
-					},
-					success: function (response) {
-						alert('Form submitted successfully!');
-					},
-					error: function (xhr) {
-						console.error(xhr.responseJSON);
+			fetch(this.action, {
+				method: 'POST',
+				headers: {
+					'Accept': 'application/json'
+				},
+				body: formData
+			})
+			.then(async response => {
+				const data = await response.json();
+				// alert(data.message);
+				if (!response.ok) {
+					// console.log(data);
+					if (!!data?.errors && data.errors['cf-turnstile-response']) {
+						$("#cok").html('Please tick and verify you are human! 🙂').addClass('alert-danger').removeClass("d-none");
+					} else {
+						$("#cok").html(data.message || 'Submission failed.').addClass('alert-danger').removeClass("d-none");
 					}
-				});
-
-			}); */
+					throw new Error(data.message || 'Submission failed.');
+				} else {
+					$(this).removeClass("was-validated");
+					$("#cok").html(data.message).addClass('alert-success').removeClass("d-none");
+					this.reset();
+				}
+			/* })
+			.catch(error => {
+				console.log(error)
+				$("#cok").html(error.message).addClass('alert-danger').removeClass("d-none"); */
+			});
 		}
     });
-
 
     $("#yr").text(new Date().getFullYear());
 });
