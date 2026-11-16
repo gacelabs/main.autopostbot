@@ -39,7 +39,7 @@ $(function () {
     $("#menu").html(
         nav.map((n) => {
 			if (n[0] == 'blog') {
-				return `<li class="nav-item"><a class="nav-link ignore" href="/${n[0]}/">${n[1]}</a></li>`;
+				return `<li class="nav-item"><a class="nav-link ignore" id="bp" href="/learn/">${n[1]}</a></li>`;
 			} else {
 				return `<li class="nav-item"><a class="nav-link" href="#${n[0]}">${n[1]}</a></li>`;
 			}
@@ -230,16 +230,17 @@ $(function () {
 	var protocol = window.location.protocol + '//';
 	if (window.location.host.indexOf('local.') >= 0) {
 		var domain = window.location.host.replace('.main', '.com');
-		var correctLink = protocol + domain;
+		var correctAppLink = correctBlogLink = protocol + domain;
 	} else {
-		var domain = 'app.' + window.location.host;
-		var correctLink = protocol + domain;
+		var correctAppLink = protocol + 'app.' + window.location.host;
+		var correctBlogLink = protocol + 'blog.' + window.location.host;
 	}
-	// console.log(correctLink);
-	$('a#gg-form').attr('href', correctLink + $('a#gg-form').attr('href'));
-	$('#lg').attr('href', correctLink + $('#lg').attr('href'));
-	$('#rg').attr('href', correctLink + $('#rg').attr('href'));
-	$('#cform').attr('action', correctLink + $('#cform').attr('action'));
+	// console.log(correctAppLink, correctBlogLink);
+	$('a#gg-form').attr('href', correctAppLink + $('a#gg-form').attr('href'));
+	$('#lg').attr('href', correctAppLink + $('#lg').attr('href'));
+	$('#rg').attr('href', correctAppLink + $('#rg').attr('href'));
+	$('#bp').attr('href', correctBlogLink + $('#bp').attr('href'));
+	$('#cform').attr('action', correctAppLink + $('#cform').attr('action'));
 
     /* $("#cform,.authf").on("submit", function (e) {
         e.preventDefault();
@@ -288,7 +289,7 @@ $(function () {
 			});
 
 			/* $.ajax({
-				url: correctLink,
+				url: correctAppLink,
 				method: 'GET',
 				xhrFields: { withCredentials: true } // Allows browser to receive the cookie
 			}).done(function () {
