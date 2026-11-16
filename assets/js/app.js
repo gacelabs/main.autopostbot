@@ -39,7 +39,7 @@ $(function () {
     $("#menu").html(
         nav.map((n) => {
 			if (n[0] == 'blog') {
-				// return `<li class="nav-item"><a class="nav-link ignore" id="bp" href="/learn/">${n[1]}</a></li>`;
+				// return `<li class="nav-item"><a class="nav-link ignore" id="bp" href="/">${n[1]}</a></li>`;
 				return `<li class="nav-item"><a class="nav-link ignore" id="bp" href="/${n[0]}/">${n[1]}</a></li>`;
 			} else {
 				return `<li class="nav-item"><a class="nav-link" href="#${n[0]}">${n[1]}</a></li>`;
@@ -231,10 +231,11 @@ $(function () {
 	var protocol = window.location.protocol + '//';
 	if (window.location.host.indexOf('local.') >= 0) {
 		var domain = window.location.host.replace('.main', '.com');
-		var correctAppLink = correctBlogLink = protocol + domain;
+		var correctAppLink = protocol + domain;
+		var correctBlogLink = correctAppLink + '/learn';
 	} else {
-		var correctAppLink = protocol + 'app.' + window.location.host;
-		var correctBlogLink = protocol + 'blog.' + window.location.host;
+		var correctAppLink = protocol + 'app.' + window.location.host.replace('www.', '');
+		var correctBlogLink = protocol + 'blog.' + window.location.host.replace('www.', '');
 	}
 	// console.log(correctAppLink, correctBlogLink);
 	$('a#gg-form').attr('href', correctAppLink + $('a#gg-form').attr('href'));
