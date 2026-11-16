@@ -39,7 +39,8 @@ $(function () {
     $("#menu").html(
         nav.map((n) => {
 			if (n[0] == 'blog') {
-				return `<li class="nav-item"><a class="nav-link ignore" id="bp" href="/learn/">${n[1]}</a></li>`;
+				// return `<li class="nav-item"><a class="nav-link ignore" id="bp" href="/learn/">${n[1]}</a></li>`;
+				return `<li class="nav-item"><a class="nav-link ignore" id="bp" href="/${n[0]}/">${n[1]}</a></li>`;
 			} else {
 				return `<li class="nav-item"><a class="nav-link" href="#${n[0]}">${n[1]}</a></li>`;
 			}
@@ -239,7 +240,7 @@ $(function () {
 	$('a#gg-form').attr('href', correctAppLink + $('a#gg-form').attr('href'));
 	$('#lg').attr('href', correctAppLink + $('#lg').attr('href'));
 	$('#rg').attr('href', correctAppLink + $('#rg').attr('href'));
-	$('#bp').attr('href', correctBlogLink + $('#bp').attr('href'));
+	// $('#bp').attr('href', correctBlogLink + $('#bp').attr('href'));
 	$('#cform').attr('action', correctAppLink + $('#cform').attr('action'));
 
     /* $("#cform,.authf").on("submit", function (e) {
